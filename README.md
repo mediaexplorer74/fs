@@ -16,7 +16,7 @@ Cleared fork of FS client:
 - Min. UWP SDK 10.0.17134.0
 
 ## Reference
-[FS Client](https://github.com/fsclient/fs-clone) Cancelled (archived) original fs client (or clone... idk)
+[FS Client](https://github.com/fsclient/fs-clone) Cancelled (archived) original (or clone... idk) fs project.
 
 ## ..
 As is. No support. RnD only. DIY.
