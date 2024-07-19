@@ -6,23 +6,33 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public record MirrorGetterConfig(IReadOnlyCollection<Uri> Mirrors)
+    public class MirrorGetterConfig
     {
-        private static readonly Func<HttpResponseMessage, CancellationToken, ValueTask<bool>> defaultValidator = new Func<HttpResponseMessage, CancellationToken, ValueTask<bool>>(
+        private static readonly Func<HttpResponseMessage, CancellationToken, ValueTask<bool>> 
+            defaultValidator = new Func<HttpResponseMessage, CancellationToken, ValueTask<bool>>(
             (response, _) => new ValueTask<bool>(response.IsSuccessStatusCode));
 
-        public HttpMethod HttpMethod { get; init; } = HttpMethod.Get;
+        public MirrorGetterConfig(IReadOnlyList<Uri> mirrors)
+        {
+            Mirrors = mirrors;
+        }
 
-        public IReadOnlyDictionary<string, string>? AdditionalHeaders { get; init; }
+        public IReadOnlyCollection<Uri> Mirrors { get; set; }
 
-        public ProviderMirrorCheckingStrategy MirrorCheckingStrategy { get; init; } = ProviderMirrorCheckingStrategy.Parallel;
+        public HttpMethod HttpMethod { get; set; } = HttpMethod.Get;
 
-        public Uri? HealthCheckRelativeLink { get; init; }
+        public IReadOnlyDictionary<string, string>? AdditionalHeaders { get; set; }
 
-        public Func<HttpResponseMessage, CancellationToken, ValueTask<bool>> Validator { get; init; } = defaultValidator;
+        public ProviderMirrorCheckingStrategy MirrorCheckingStrategy { get; set; } 
+            = ProviderMirrorCheckingStrategy.Parallel;
 
-        public Func<Uri?, CancellationToken, ValueTask<Uri?>>? MirrorFinder { get; init; }
+        public Uri? HealthCheckRelativeLink { get; set; }
 
-        public HttpClientHandler? Handler { get; init; }
+        public Func<HttpResponseMessage, CancellationToken, ValueTask<bool>> 
+            Validator { get; set; } = defaultValidator;
+
+        public Func<Uri?, CancellationToken, ValueTask<Uri?>>? MirrorFinder { get; set; }
+
+        public HttpClientHandler? Handler { get; set; }
     }
 }

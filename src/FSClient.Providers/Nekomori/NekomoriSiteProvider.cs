@@ -24,14 +24,14 @@
 
         protected override MirrorGetterConfig PrepareMirrorGetterConfig()
         {
-            return base.PrepareMirrorGetterConfig() with
-            {
-                AdditionalHeaders = new Dictionary<string, string>
-                {
-                    ["Origin"] = WebClientDomain.GetOrigin() ?? string.Empty,
-                    ["Referer"] = WebClientDomain.ToString(),
-                }
-            };
+            return base.PrepareMirrorGetterConfig();// with
+            //{
+            //    AdditionalHeaders = new Dictionary<string, string>
+            //    {
+            //        ["Origin"] = WebClientDomain.GetOrigin() ?? string.Empty,
+            //        ["Referer"] = WebClientDomain.ToString(),
+            //    }
+            //};
         }
     }
 }

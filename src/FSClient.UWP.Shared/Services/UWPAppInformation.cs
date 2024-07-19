@@ -47,7 +47,7 @@
 
         public Version ManifestVersion => versionFactory.Value;
 
-        public Version AssemblyVersion => Version.Parse(ThisAssembly.AssemblyFileVersion);
+        public Version AssemblyVersion => Version.Parse(/*ThisAssembly.AssemblyFileVersion*/default);
 
         public bool IsUpdated => isUpdatedFactory.Value;
 
@@ -177,7 +177,7 @@
         public override string ToString()
         {
             return
-                $@"Version = {ThisAssembly.AssemblyInformationalVersion}
+                $@"Version = {/*ThisAssembly.AssemblyInformationalVersion*/default}
 Windows = {SystemVersion}
 DeviceFamily = {DeviceFamily}";
         }

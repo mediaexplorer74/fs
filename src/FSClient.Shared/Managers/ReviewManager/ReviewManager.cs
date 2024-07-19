@@ -110,13 +110,17 @@
 
             if (reviewProviders.TryGetValue(review.Site, out var provider))
             {
-                var allowed = await userManager.CheckRequirementsAsync(provider.Site, provider.ReadRequirements | ProviderRequirements.AccountForAny, cancellationToken).ConfigureAwait(false);
+                var allowed = await userManager.CheckRequirementsAsync(
+                    provider.Site, 
+                    provider.ReadRequirements | ProviderRequirements.AccountForAny, 
+                    cancellationToken).ConfigureAwait(false);
                 if (!allowed)
                 {
                     return (null, ProviderResult.NeedLogin);
                 }
 
-                return await provider.VoteReviewAsync(review, previousRating, ratingVote, cancellationToken).ConfigureAwait(false);
+                return await provider.VoteReviewAsync(review, previousRating, 
+                    ratingVote, cancellationToken).ConfigureAwait(false);
             }
             return (null, ProviderResult.NoValidProvider);
         }

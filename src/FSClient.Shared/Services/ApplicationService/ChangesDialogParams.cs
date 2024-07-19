@@ -3,17 +3,24 @@
     using System;
     using System.Collections.Generic;
 
-    public record ChangesDialogInput(IEnumerable<ChangelogEntity> Changelog)
+    public class ChangesDialogInput
     {
-        public Version? UpdateVersion { get; init; }
+        public IEnumerable<ChangelogEntity> Changelog;
 
-        public Version? ShowFromVersion { get; init; }
+        public ChangesDialogInput(IEnumerable<ChangelogEntity> changelog)
+        {
+            Changelog = changelog;
+        }
 
-        public Version? ShowToVersion { get; init; }
+        public Version? UpdateVersion { get; set; }
+
+        public Version? ShowFromVersion { get; set; }
+
+        public Version? ShowToVersion { get; set; }
     }
 
     public class ChangesDialogOutput
     {
-        public bool ShouldOpenUpdatePage { get; init; }
+        public bool ShouldOpenUpdatePage { get; set; }
     }
 }

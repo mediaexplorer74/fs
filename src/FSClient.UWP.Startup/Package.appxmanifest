@@ -6,11 +6,11 @@
 		 xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
 		 xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
 		 IgnorableNamespaces="uap mp uap3 rescap desktop">
-  <Identity Name="fc2a7a53-fdae-4021-9a6b-efeb2b9ff456" Publisher="CN=developer" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="fc2a7a53-fdae-4021-9a6b-efeb2b9ff456" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="ME.FSClientV1" Publisher="CN=Admin" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="fc2a7a53-fd30-4030-9a30-efeb2b9ff410" PhonePublisherId="50010030-6565-4030-4030-200280350010" />
   <Properties>
-    <DisplayName>FS Клиент DEV</DisplayName>
-    <PublisherDisplayName>FSClientDev</PublisherDisplayName>
+    <DisplayName>FS Client 1.0 DEV</DisplayName>
+    <PublisherDisplayName>mediaexplorer</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -23,7 +23,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="FSClient.UWP.App">
-      <uap:VisualElements DisplayName="FS Клиент DEV" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Приложение для просмотра фильмов и сериалов." BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="FSClient 1.0-dev" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Приложение для просмотра фильмов и сериалов." BackgroundColor="transparent">
         <uap:LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\BadgeLogo.png" />
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="FS Клиент DEV" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
           <uap:ShowNameOnTiles>
@@ -32,6 +32,10 @@
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="transparent" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape"/>
+          <uap:Rotation Preference="portrait"/>
+          <uap:Rotation Preference="landscapeFlipped"/></uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.protocol">
@@ -61,5 +65,6 @@
     <Capability Name="internetClient" />
     <uap3:Capability Name="backgroundMediaPlayback" />
     <uap3:Capability Name="remoteSystem" />
+    <uap:Capability Name="removableStorage"/>
   </Capabilities>
 </Package>

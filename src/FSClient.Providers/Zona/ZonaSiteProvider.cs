@@ -24,10 +24,10 @@
 
         protected override MirrorGetterConfig PrepareMirrorGetterConfig()
         {
-            return base.PrepareMirrorGetterConfig() with
-            {
-                MirrorFinder = MirrorFinder
-            };
+            return base.PrepareMirrorGetterConfig(); //with
+            //{
+            //    MirrorFinder = MirrorFinder
+            //};
         }
 
         private ValueTask<Uri?> MirrorFinder(Uri? previousMirror, CancellationToken cancellationToken)

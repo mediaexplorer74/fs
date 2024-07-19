@@ -276,7 +276,7 @@
 
         private string GetAppVersionString()
         {
-            var assemblyVersion = appInformation.AssemblyVersion.ToString(3);
+            string assemblyVersion = "1.0.0.0";//appInformation.AssemblyVersion.ToString(3);
             var manifsetVersion = appInformation.ManifestVersion.ToString(3);
             if (manifsetVersion == assemblyVersion)
             {
@@ -489,7 +489,8 @@
                 && skippedVersion != null
                 && checkForUpdatesResult.Version?.ToString(3) == skippedVersion)
             {
-                checkForUpdatesResult = new CheckForUpdatesResult(CheckForUpdatesResultType.Skipped, checkForUpdatesResult.Version, null);
+                checkForUpdatesResult = new CheckForUpdatesResult(
+                    CheckForUpdatesResultType.Skipped, checkForUpdatesResult.Version, null);
             }
 
             if (forceCheckForUpdate
@@ -532,7 +533,7 @@
 
                 if (checkForUpdatesResult.ResultType == CheckForUpdatesResultType.Skipped)
                 {
-                    input = input with
+                    input = new ChangesDialogInput(default)
                     {
                         ShowToVersion = currentVersion,
                         UpdateVersion = null

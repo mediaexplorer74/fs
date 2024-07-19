@@ -5,8 +5,9 @@
 
     public record ApplicationGlobalSettings
     {
-        public IEnumerable<ProviderConfig> ProviderConfigs { get; init; } = Enumerable.Empty<ProviderConfig>();
+        public IEnumerable<ProviderConfig> ProviderConfigs { get; set; } = Enumerable.Empty<ProviderConfig>();
 
-        public IReadOnlyDictionary<DistributionType, LatestVersionInfo> LatestVersionPerDistributionType { get; init; } = new Dictionary<DistributionType, LatestVersionInfo>();
+        public IReadOnlyDictionary<DistributionType, LatestVersionInfo> 
+            LatestVersionPerDistributionType { get; set; } = new Dictionary<DistributionType, LatestVersionInfo>();
     }
 }

@@ -2,7 +2,9 @@
 {
     using System;
 
-    public record LatestVersionInfo(
-        string Version,
-        Uri? FallbackInstallPage);
+    public class LatestVersionInfo
+    {
+        public string Version;
+        public Uri? FallbackInstallPage;
+    }
 }

@@ -300,7 +300,10 @@
 
             return enumerable
                 .Take(60)
-                .WhereAwaitWithCancellation((i, ct) => IsNotItemBlockedNorSearchInputAsync(i, true, filter.SearchRequest, ct));
+                .WhereAwaitWithCancellation((i, ct) =>
+                {
+                    return IsNotItemBlockedNorSearchInputAsync(i, true, filter.SearchRequest, ct);
+                });
         }
 
         public IAsyncEnumerable<ItemInfo> GetShortSearchResult(string request, Site site, Section section)
@@ -392,7 +395,8 @@
 
             if (filter.SelectedTags.Any())
             {
-                var tagsSetting = QueryStringHelper.CreateQueryString(filter.SelectedTags.Select(t => new KeyValuePair<string, string?>(t.Type ?? TagsEmptyTypeKey, t.Value)));
+                var tagsSetting = QueryStringHelper.CreateQueryString(
+                    filter.SelectedTags.Select(t => new KeyValuePair<string, string?>(t.Type ?? TagsEmptyTypeKey, t.Value)));
                 settingService.SetSetting(Settings.StateSettingsContainer,
                     GetFilterStateKey(filter.PageParams, TagsStateKey), tagsSetting);
             }
@@ -433,6 +437,11 @@
                 settingService.DeleteSetting(Settings.StateSettingsContainer,
                     GetFilterStateKey(filter.PageParams, SortTypeStateKey));
             }
+        }
+
+        private string GetFilterStateKey(PageParams pageParams, string tagsStateKey)
+        {
+            throw new NotImplementedException();
         }
 
         private IEnumerable<TitledTag> ReadTitledTagsFromCache(SectionPageParams pageParams)

@@ -24,7 +24,8 @@
 
     using Humanizer;
 
-    public sealed partial class ChangesDialog : ContentDialog, IContentDialog<ChangesDialogInput, ChangesDialogOutput>
+    public sealed partial class ChangesDialog : ContentDialog,
+        IContentDialog<ChangesDialogInput, ChangesDialogOutput>
     {
         public ChangesDialog()
         {
@@ -35,7 +36,7 @@
         {
             return Dispatcher.CheckBeginInvokeOnUI(async () =>
             {
-                TextBlock.Inlines.Clear();
+                //TextBlock.Inlines.Clear();
 
                 foreach (var entity in arg.Changelog.OrderByDescending(e => e.Version))
                 {
@@ -44,22 +45,22 @@
                         && (arg.ShowToVersion == null
                             || entity.Version <= arg.ShowToVersion))
                     {
-                        TextBlock.Inlines.Add(new Run
-                        {
-                            Text = entity.Version?.ToString(3) ?? Strings.ChangesDialog_UnknownVersion,
-                            FontWeight = FontWeights.Bold
-                        });
-                        TextBlock.Inlines.Add(new LineBreak());
+                        //TextBlock.Inlines.Add(new Run
+                        //{
+                        //    Text = entity.Version?.ToString(3) ?? Strings.ChangesDialog_UnknownVersion,
+                        //    FontWeight = FontWeights.Bold
+                        //});
+                        //TextBlock.Inlines.Add(new LineBreak());
 
                         if (entity.Changes != null)
                         {
                             foreach (var change in entity.Changes)
                             {
-                                TextBlock.Inlines.Add(new Run {Text = "● " + change});
-                                TextBlock.Inlines.Add(new LineBreak());
+                                //TextBlock.Inlines.Add(new Run {Text = "● " + change});
+                                //TextBlock.Inlines.Add(new LineBreak());
                             }
 
-                            TextBlock.Inlines.Add(new LineBreak());
+                            //TextBlock.Inlines.Add(new LineBreak());
                         }
                     }
                 }

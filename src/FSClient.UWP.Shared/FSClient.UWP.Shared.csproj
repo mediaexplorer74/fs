@@ -3,20 +3,24 @@
   <Import Project="..\UWP.Build.Props" />
 
   <PropertyGroup>
+    <LangVersion>latest</LangVersion>
     <IsUno>false</IsUno>
     <TargetFrameworks>$(UwpTargetFramework)</TargetFrameworks>
     <TargetFrameworks Condition="'$(IsWinUI)' == 'true' OR '$(IsUno)' == 'true'">$(TargetFrameworks);net5.0</TargetFrameworks>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
   </PropertyGroup>
+  
   <PropertyGroup Condition="'$(TargetFramework)' == '$(UwpTargetFramework)'">
     <DefineConstants>$(DefineConstants);UAP</DefineConstants>
   </PropertyGroup>
+  
   <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0' AND '$(IsWinUI)' == 'true'">
     <Platforms>x86;x64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
     <EnableDefaultPageItems>false</EnableDefaultPageItems>
     <DefineConstants>$(DefineConstants);WINUI3</DefineConstants>
   </PropertyGroup>
+  
   <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0' AND '$(IsUno)' == 'true'">
     <DefineConstants>$(DefineConstants);WINUI3;UNO</DefineConstants>
   </PropertyGroup>

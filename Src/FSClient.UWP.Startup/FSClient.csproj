@@ -2,155 +2,162 @@
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="..\UWP.Build.Props" />
-  
-  <PropertyGroup>
-    <LangVersion>latest</LangVersion>
-    <NoWarn>$(NoWarn);CA1016</NoWarn>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-  </PropertyGroup>
-
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8C8B13FE-185F-41B8-9697-0FCCE561BB43}</ProjectGuid>
-    <OutputType>winmdobj</OutputType>
+    <DefaultLanguage Condition="'$(DefaultLanguage)' == ''">en-US</DefaultLanguage>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{65E3DBB9-4DC6-4274-B787-35F88061FA4C}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FSClient.UWP.Background</RootNamespace>
-    <AssemblyName>FSClient.UWP.Background</AssemblyName>
+    <RootNamespace>FSClient.UWP.Startup</RootNamespace>
+    <AssemblyName>FSClient</AssemblyName>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == ''">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == ''">10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion Condition="'$(TargetPlatformMinVersion)' == '' AND '$(StartupTargetPlatformMinVersion)' != ''">$(StartupTargetPlatformMinVersion)</TargetPlatformMinVersion>
     <TargetPlatformMinVersion Condition="'$(TargetPlatformMinVersion)' == ''">$(TargetPlatformVersion)</TargetPlatformMinVersion>
+    <ExtrasUwpMetaPackageVersion Condition="'$(ExtrasUwpMetaPackageVersion)' == ''">0.0.0</ExtrasUwpMetaPackageVersion>
+    <MicrosoftUiPackageVersion Condition="'$(MicrosoftUiPackageVersion)' == ''">0.0.0</MicrosoftUiPackageVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <AllowCrossPlatformRetargeting>false</AllowCrossPlatformRetargeting>
-    <ExtrasUwpMetaPackageVersion Condition="'$(ExtrasUwpMetaPackageVersion)' == ''">6.2.12</ExtrasUwpMetaPackageVersion>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <Win32Resource>Assets\MiddleClickScrolling-CursorType.res</Win32Resource>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <PackageCertificateThumbprint>FA3B159993CB70B8C4A04D378F9B02133A149294</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>FSClient_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
-  
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
-  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
-    <PlatformTarget>ARM</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\ARM\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
-    <PlatformTarget>ARM</PlatformTarget>
     <OutputPath>bin\ARM\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
-  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
-    <PlatformTarget>ARM64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\ARM64\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
-  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
-    <PlatformTarget>ARM64</PlatformTarget>
     <OutputPath>bin\ARM64\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
-  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <PlatformTarget>x64</PlatformTarget>
     <OutputPath>bin\x64\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
-  
-  
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Tasks\AutomatedBackupTask.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tasks\MirrorUpdaterTask.cs" />
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <Content Include="Assets\**\*.png" />
+    <None Include="Assets\MiddleClickScrolling-CursorType.res" />
+    <Content Include="Assets\AdaptiveCards\HistoryItemCard.json" />
+    <Content Include="Properties\Default.rd.xml" />
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <None Include="FSClient.UWP.Startup_TemporaryKey.pfx" />
+    <None Include="FSClient_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.UI.Xaml" Version="$(MicrosoftUiPackageVersion)" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="$(ExtrasUwpMetaPackageVersion)" />
     <PackageReference Include="MSBuilder.GenerateAssemblyInfo" Version="0.2.2" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FSClient.Data\FSClient.Data.csproj">
+      <Project>{13ad2e28-6882-450f-8e93-2c300fd7d7f3}</Project>
+      <Name>FSClient.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FSClient.Shared\FSClient.Shared.csproj">
-      <Project>{217A1155-013C-41BD-9C50-1A6C8980D1E2}</Project>
+      <Project>{217a1155-013c-41bd-9c50-1a6c8980d1e2}</Project>
       <Name>FSClient.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FSClient.UWP.Background\FSClient.UWP.Background.csproj">
+      <Project>{8c8b13fe-185f-41b8-9697-0fcce561bb43}</Project>
+      <Name>FSClient.UWP.Background</Name>
     </ProjectReference>
     <ProjectReference Include="..\FSClient.UWP.Shared\FSClient.UWP.Shared.csproj">
       <Project>{9cf65325-1b35-4621-95bd-95744d631f1e}</Project>
@@ -161,11 +168,4 @@
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

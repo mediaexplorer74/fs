@@ -185,11 +185,11 @@
                 State = state is ILogState logState ? logState.GetLogProperties(false) : state;
             }
 
-            public DateTimeOffset DateTime { get; init; }
-            public string LogLevel { get; init; }
-            public string Message { get; init; }
-            public Dictionary<string, object?>? Exception { get; init; }
-            public object? State { get; init; }
+            public DateTimeOffset DateTime { get; set; }
+            public string LogLevel { get; set; }
+            public string Message { get; set; }
+            public Dictionary<string, object?>? Exception { get; set; }
+            public object? State { get; set; }
         }
 
         public sealed class Provider : ILoggerProvider

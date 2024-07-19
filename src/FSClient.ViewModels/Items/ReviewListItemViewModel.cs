@@ -15,9 +15,9 @@
 
     public class ReviewListItemViewModel : ViewModelBase
     {
-        private readonly Review review;
-        private readonly IReviewManager reviewManager;
-        private readonly INotificationService notificationService;
+        public Review review;
+        public IReviewManager reviewManager;
+        public INotificationService notificationService;
 
         public ReviewListItemViewModel(
             Review review,
@@ -61,7 +61,8 @@
 
         private async Task VoteAsync(IRatingVote ratingVote, CancellationToken cancellationToken)
         {
-            var (newRating, result) = await reviewManager.VoteReviewAsync(review, Rating!, ratingVote, cancellationToken).ConfigureAwait(false);
+            var (newRating, result) = await reviewManager.VoteReviewAsync(review, Rating!,
+                ratingVote, cancellationToken).ConfigureAwait(false);
             if (newRating != null)
             {
                 Rating = newRating;
@@ -70,7 +71,8 @@
             if (result != ProviderResult.Success
                 && EnumHelper.GetDisplayDescription(result) is string errorMessage)
             {
-                await notificationService.ShowAsync(errorMessage.FormatWith(review.Site.Title), NotificationType.Warning).ConfigureAwait(false);
+                await notificationService.ShowAsync(errorMessage.FormatWith(review.Site.Title),
+                    NotificationType.Warning).ConfigureAwait(false);
             }
         }
     }

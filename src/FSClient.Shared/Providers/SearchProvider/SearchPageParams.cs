@@ -6,7 +6,7 @@
 
     using FSClient.Shared.Models;
 
-    public record SearchPageParams(Site Site, Section Section) : SectionPageParams(Site, SectionPageType.Search, Section)
+    public class SearchPageParams(Site Site, Section Section) : SectionPageParams(Site, SectionPageType.Search, Section)
     {
         public SearchPageParams(
             Site site, Section section,
@@ -26,10 +26,15 @@
             MinimumRequestLength = minimumRequestLength;
         }
 
-        public DisplayItemMode DisplayItemMode { get; init; } = DisplayItemMode.Normal;
+        public DisplayItemMode DisplayItemMode { get; set; } = DisplayItemMode.Normal;
 
-        public int MinimumRequestLength { get; init; } = 2;
+        public int MinimumRequestLength { get; set; } = 2;
     }
 
-    public record SearchPageFilter(SearchPageParams PageParams, string SearchRequest) : BaseSectionPageFilter<SearchPageParams>(PageParams);
+    public class SearchPageFilter(SearchPageParams PageParams, string SearchRequest)
+        : BaseSectionPageFilter<SearchPageParams>(PageParams)
+    {
+        public PageParams PageParams;
+        public string SearchRequest;
+    }
 }

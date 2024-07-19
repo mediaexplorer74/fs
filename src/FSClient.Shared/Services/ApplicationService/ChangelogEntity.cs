@@ -5,10 +5,10 @@
 
     public class ChangelogEntity
     {
-        public Version? Version { get; init; }
+        public Version? Version { get; set; }
 
-        public bool? ShowOnStartup { get; init; } = true;
+        public bool? ShowOnStartup { get; set; } = true;
 
-        public IEnumerable<string>? Changes { get; init; }
+        public IEnumerable<string>? Changes { get; set; }
     }
 }

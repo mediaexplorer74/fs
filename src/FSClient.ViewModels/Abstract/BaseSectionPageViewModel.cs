@@ -53,7 +53,7 @@
         protected TSectionPageFilter FilterFromCache { get; }
         protected bool IsRefreshRequired { get; set; } = true;
 
-        public TSectionPageParams PageParams { get; }
+        public TSectionPageParams PageParams { get; set; }
 
         public virtual Range? Year
         {
@@ -81,7 +81,17 @@
             set => Set(value);
         }
 
-        public override string Caption => PageParams.Section.Title;
+        public override string Caption
+        {
+            get
+            {
+                var s = "";
+                if (PageParams != null)
+                      s = PageParams.Section.Title;
+                
+                return s;
+            }
+        }
 
         public virtual bool CanSort => PageParams.SortTypes?.Any() == true;
         public virtual bool CanFilterByYear => PageParams.YearLimit.HasValue;

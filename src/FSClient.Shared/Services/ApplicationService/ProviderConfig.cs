@@ -33,26 +33,26 @@
             Properties = properties;
         }
 
-        public Site Site { get; init; }
+        public Site Site { get; set; }
 
-        public bool? IsVisibleToUser { get; init; }
+        public bool? IsVisibleToUser { get; set; }
 
-        public bool? EnforceDisabled { get; init; }
+        public bool? EnforceDisabled { get; set; }
 
-        public bool? IsEnabledByDefault { get; init; }
+        public bool? IsEnabledByDefault { get; set; }
 
-        public bool? CanBeMain { get; init; }
+        public bool? CanBeMain { get; set; }
 
-        public Uri? HealthCheckRelativeLink { get; init; }
+        public Uri? HealthCheckRelativeLink { get; set; }
 
-        public IEnumerable<Uri>? Mirrors { get; init; }
+        public IEnumerable<Uri>? Mirrors { get; set; }
 
-        public ProviderRequirements? Requirements { get; init; }
+        public ProviderRequirements? Requirements { get; set; }
 
-        public ProviderMirrorCheckingStrategy? MirrorCheckingStrategy { get; init; }
+        public ProviderMirrorCheckingStrategy? MirrorCheckingStrategy { get; set; }
 
-        public int? Priority { get; init; }
+        public int? Priority { get; set; }
 
-        public IReadOnlyDictionary<string, string?>? Properties { get; init; }
+        public IReadOnlyDictionary<string, string?>? Properties { get; set; }
     }
 }

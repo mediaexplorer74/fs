@@ -5,10 +5,10 @@
 
     public record BlockListSettings
     {
-        public IEnumerable<string> FullBlockedIds { get; init; } = Enumerable.Empty<string>();
+        public IEnumerable<string> FullBlockedIds { get; set; } = Enumerable.Empty<string>();
 
-        public IEnumerable<string> BlockedIds { get; init; } = Enumerable.Empty<string>();
+        public IEnumerable<string> BlockedIds { get; set; } = Enumerable.Empty<string>();
 
-        public FilterRegexes FilterRegexes { get; init; } = new FilterRegexes();
+        public FilterRegexes FilterRegexes { get; set; } = new FilterRegexes();
     }
 }

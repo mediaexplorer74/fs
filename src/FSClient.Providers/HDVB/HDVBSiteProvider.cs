@@ -36,7 +36,7 @@
             if (Properties.TryGetValue(HDVBActualizerScriptKey, out var actualizerScriptStr)
                 && Uri.TryCreate(actualizerScriptStr, UriKind.Absolute, out var actualizerScript))
             {
-                config = config with
+                config = new MirrorGetterConfig(default)
                 {
                     MirrorFinder = (_, ct) => MirrorFinder(actualizerScript, ct)
                 };

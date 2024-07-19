@@ -5,17 +5,19 @@
 
     using FSClient.Shared.Models;
 
-    public abstract record BaseSectionPageFilter<TSectionPageParams>(TSectionPageParams PageParams)
+    public abstract class BaseSectionPageFilter<TSectionPageParams>(TSectionPageParams PageParams)
         where TSectionPageParams : SectionPageParams
     {
-        public Range? Year { get; init; }
+        public TSectionPageParams PageParams;
 
-        public bool FilterByFavorites { get; init; }
+        public Range? Year { get; set; }
 
-        public bool FilterByInHistory { get; init; }
+        public bool FilterByFavorites { get; set; }
 
-        public IReadOnlyCollection<TitledTag> SelectedTags { get; init; } = Array.Empty<TitledTag>();
+        public bool FilterByInHistory { get; set; }
 
-        public SortType? CurrentSortType { get; init; }
+        public IReadOnlyCollection<TitledTag> SelectedTags { get; set; } = Array.Empty<TitledTag>();
+
+        public SortType? CurrentSortType { get; set; }
     }
 }

@@ -2,7 +2,11 @@
 {
     using System.Text.RegularExpressions;
 
-    public record FilterRegexes(
+    public class FilterRegexes(
         Regex? SearchInputAdultFilter = null,
-        Regex? ItemsByTitleAdultFilter = null);
+        Regex? ItemsByTitleAdultFilter = null)
+    {
+        public Regex? ItemsByTitleAdultFilter;
+        internal Regex SearchInputAdultFilter;
+    }
 }

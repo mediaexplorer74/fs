@@ -150,7 +150,7 @@
             if (ratingVote is not UpDownRatingVote upDownRatingVote
                 || previousRating is not UpDownRating upDownRating
                 || !upDownRatingVote.UpVoted.HasValue
-                || !upDownRatingVote.UpVoted.Value)
+                /*|| !upDownRatingVote.UpVoted.Value*/)
             {
                 return (null, ProviderResult.NotSupported);
             }
@@ -177,12 +177,14 @@
                 return (null, ProviderResult.Failed);
             }
 
-            var newRating = new UpDownRating(upCount.Value, upDownRating.DownCount, true, false, DownVoteVisible: false, CanVote: false);
+            var newRating = new UpDownRating(upCount.Value, upDownRating.DownCount,
+                true, false, DownVoteVisible: false, CanVote: false);
 
             return (newRating, ProviderResult.Success);
         }
 
-        public async Task<(IRating? rating, ProviderResult result)> VoteItemAsync(ItemInfo itemInfo, IRating previousRating, IRatingVote ratingVote, CancellationToken cancellationToken)
+        public async Task<(IRating? rating, ProviderResult result)> VoteItemAsync(ItemInfo itemInfo, 
+            IRating previousRating, IRatingVote ratingVote, CancellationToken cancellationToken)
         {
             if (siteProvider.CurrentUser == null)
             {

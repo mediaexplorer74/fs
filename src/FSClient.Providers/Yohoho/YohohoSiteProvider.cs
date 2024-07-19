@@ -37,15 +37,15 @@
         {
             var referer = new Uri(Properties[YohohoRefererKey], UriKind.Absolute);
 
-            return base.PrepareMirrorGetterConfig() with
-            {
-                HttpMethod = HttpMethod.Get,
-                AdditionalHeaders = new Dictionary<string, string>
-                {
-                    ["Origin"] = referer.GetOrigin() ?? string.Empty,
-                    ["Referer"] = referer.ToString(),
-                }
-            };
+            return base.PrepareMirrorGetterConfig();// with
+            //{
+            //    HttpMethod = HttpMethod.Get,
+            //    AdditionalHeaders = new Dictionary<string, string>
+            //    {
+            //        ["Origin"] = referer.GetOrigin() ?? string.Empty,
+            //        ["Referer"] = referer.ToString(),
+            //    }
+            //};
         }
 
         protected override async ValueTask<bool> IsValidMirrorResponse(HttpResponseMessage responseMessage, CancellationToken cancellationToken)
