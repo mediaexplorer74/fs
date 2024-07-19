@@ -2,7 +2,7 @@
 Some experimental [FS Client](https://github.com/fsclient/fs-clone) fork for my own micro-research. Draft.
 
 ## Screenshot(s)
-![W11 Desktop](Images/shot10.png)
+![W11 Desktop](Images/shot01.png)
 
 ## About
 Cleared fork of FS client:
